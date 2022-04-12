@@ -9,20 +9,17 @@
         <div class="product-item-detail">{{ product.description }}</div>
 
         <form (ngSubmit)="onSubmit(product, $event)">
-            <select style="width: 100px;" class="product-item-detail form-select" aria-label="Default select example">
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <input type="submit" value="Add to Cart" class="product-item-detail btn btn-primary">
+            <mat-form-field appearance="fill">
+                <mat-label>select orders</mat-label>
+                <mat-select>
+
+                    <mat-option *ngFor="let val of selectValues" [value]="val">{{val}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary">Add to Cart</button>
+
         </form>
-        <div class="product-item-detail">
-            <a routerLink="/">
-                &larr;Return to product list
-            </a>
-        </div>
+
     </div>
 
 </div>

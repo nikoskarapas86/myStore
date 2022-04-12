@@ -8,6 +8,7 @@ import { Product } from '../models/model';
 })
 export class ProductComponent implements OnInit {
   @Input() product: Product = new Product();
+  public selectValues: number[] = [1, 2, 3, 4, 5];
   constructor() {}
 
   ngOnInit(): void {}

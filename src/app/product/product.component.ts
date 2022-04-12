@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../models/model';
 
 @Component({
@@ -9,8 +10,15 @@ import { Product } from '../models/model';
 export class ProductComponent implements OnInit {
   @Input() product: Product = new Product();
   public selectValues: number[] = [1, 2, 3, 4, 5];
-  constructor() {}
+  public productForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
-  onSubmit(product: Product, $event: any) {}
+  ngOnInit(): void {
+    this.productForm = this.formBuilder.group({
+      numOfProducts: ['', [Validators.required]],
+    });
+  }
+  onSubmit() {
+    console.log(this.productForm.value);
+  }
 }

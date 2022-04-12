@@ -1,7 +1,7 @@
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  url: string | Blob;
-  description: string;
+export class Product {
+  id: number = 0;
+  name: string = '';
+  price: number = 0;
+  url: string | Blob = '';
+  description: string = '';
 }

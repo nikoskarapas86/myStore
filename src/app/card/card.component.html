@@ -1,4 +1,4 @@
-<div *ngIf="cartProducts$ | async; else noCart" class="cart-container">
+<div *ngIf="cartProducts$ | async;" class="cart-container">
     <div class="cart-item-details">
         <div *ngFor="let cartProduct of cartProducts$ | async" class="cart-item">
             <img class="" src='{{cartProduct.product.url}}'>
@@ -9,19 +9,15 @@
 
                 </div>
                 <div class="product-item-detail">
-                    <button (click)="removeCart(cartProduct.product.id)"
-                        class="product-item-detail btn btn-primary">Remove</button>
+                    <button (click)="removeCart(cartProduct.product.id)" mat-raised-button
+                        color="primary">Remove</button>
                 </div>
             </div>
         </div>
         <div class="cart-item"><b><i>Total Price</i>: {{ totalPrice }} €</b></div>
+        <div class="cart-item"><button (click)="pay()" mat-raised-button color="primary">PAYMENT</button>
+        </div>
+
     </div>
-    <!-- <div class="form-margin">
-        <app-create-form (checkoutSuccess)="checkoutSuccess($event)"></app-create-form>
-    </div> -->
+
 </div>
-<ng-template #noCart>
-    <div class="empty-cart-message">
-        Cart is Empty! Please, <a routerLink="/"> add product to cart</a>.
-    </div>
-</ng-template>

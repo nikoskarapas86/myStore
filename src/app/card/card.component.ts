@@ -31,4 +31,7 @@ export class CardComponent implements OnInit {
       !this.totalPrice && this.route.navigateByUrl('/products');
     });
   }
+  pay() {
+    this.route.navigateByUrl('/payment');
+  }
 }

@@ -1,0 +1,44 @@
+img {
+    border-radius: 10px;
+    border: 1px solid rgb(62, 150, 195);
+    width: 120px;
+    padding:30px;
+  }
+  
+  .select-input {
+    width: 108px; 
+    margin-bottom: 8px;
+  }
+  
+  .detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 64px;
+  }
+  
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+    margin-left: 128px;
+    margin-right: 128px;
+    justify-content: center;
+  }
+  
+  .back-link {
+    margin-top: 8px;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .link1{
+    text-decoration: none;
+    font-size:13px;
+    color:blue;
+    font-weight:600;
+  }

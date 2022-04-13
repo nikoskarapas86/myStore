@@ -1,13 +1,13 @@
-<div *ngIf="product" class="detail-container">
-    <a routerLink="/product-detail/{{ product.id }}">
-        <img class="product-image" src='{{ product.url}}'>
-    </a>
-    <div class="detail-item">
+<div class="detail-container">
+
+    <img class="product-image" src='{{ product?.url}}'>
+
+    <div *ngIf="product" class="detail-item">
         <div class="product-item-detail product-title"><b>{{ product.name }}</b></div>
         <div class="product-item-detail">$ {{ product.price }}</div>
         <div class="product-item-detail">{{ product.description }}</div>
 
-        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="productDetailForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
                 <mat-label>select orders</mat-label>
                 <mat-select formControlName="numOfProduct">
@@ -15,11 +15,11 @@
                     <mat-option *ngFor="let val of selectValues" [value]="val">{{val}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <button type="submit" [disabled]="productForm.invalid" mat-raised-button color="primary">Add to
+            <button type="submit" [disabled]="productDetailForm.invalid" mat-raised-button color="primary">Add to
                 Cart</button>
 
         </form>
-
+        <a routerLink="/products" class="link1"> back to products</a>
     </div>
 
 </div>

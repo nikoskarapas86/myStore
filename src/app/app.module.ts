@@ -19,6 +19,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { SuccessComponent } from './success/success.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { SuccessComponent } from './success/success.component';
     ModalContentComponent,
     PaymentComponent,
     SuccessComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

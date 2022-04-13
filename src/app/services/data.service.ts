@@ -16,6 +16,14 @@ export class DataService {
     );
     console.log(this._cartProductsSubject);
   }
+  removeFromCart(id: number) {
+    this._cartProductsSubject.next(
+      this._cartProductsSubject
+        .getValue()
+        .filter((item: CartItem) => item.product.id != id)
+    );
+    console.log(this._cartProductsSubject);
+  }
   public cartProducts$: Observable<CartItem[]> =
     this._cartProductsSubject.asObservable();
   constructor(private http: HttpClient) {}

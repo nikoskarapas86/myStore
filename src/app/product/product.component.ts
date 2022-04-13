@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Product } from '../models/model';
+import { CartItem } from '../models/cart-item';
+import { Product } from '../models/product';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-product',
@@ -11,14 +13,22 @@ export class ProductComponent implements OnInit {
   @Input() product: Product = new Product();
   public selectValues: number[] = [1, 2, 3, 4, 5];
   public productForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private dataService: DataService
+  ) {}
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      numOfProducts: ['', [Validators.required]],
+      numOfProduct: ['', [Validators.required]],
     });
   }
   onSubmit() {
-    console.log(this.productForm.value);
+    const cartItem: CartItem = {
+      numOfProduct: this.productForm?.get('numOfProduct')?.value,
+      product: this.product,
+    };
+
+    this.dataService.addToCart(cartItem);
   }
 }

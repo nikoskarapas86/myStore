@@ -11,7 +11,7 @@
         <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
                 <mat-label>select orders</mat-label>
-                <mat-select formControlName="numOfProducts">
+                <mat-select formControlName="numOfProduct">
 
                     <mat-option *ngFor="let val of selectValues" [value]="val">{{val}}</mat-option>
                 </mat-select>

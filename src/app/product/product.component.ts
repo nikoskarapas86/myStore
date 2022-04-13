@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { CartItem } from '../models/cart-item';
 import { Product } from '../models/product';
 import { DataService } from '../services/data.service';
@@ -15,7 +17,8 @@ export class ProductComponent implements OnInit {
   public productForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private dataService: DataService
+    private dataService: DataService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -30,5 +33,6 @@ export class ProductComponent implements OnInit {
     };
 
     this.dataService.addToCart(cartItem);
+    this.dialog.open(ModalContentComponent);
   }
 }

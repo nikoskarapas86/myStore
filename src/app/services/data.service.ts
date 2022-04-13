@@ -9,12 +9,13 @@ import { Product } from '../models/product';
 })
 export class DataService {
   private _cartProductsSubject = new BehaviorSubject<CartItem[]>([]);
+  public cartProducts$: Observable<CartItem[]> =
+    this._cartProductsSubject.asObservable();
+
   addToCart(item: CartItem) {
-    console.log(item);
     this._cartProductsSubject.next(
       this._cartProductsSubject.getValue().concat([item])
     );
-    console.log(this._cartProductsSubject);
   }
   removeFromCart(id: number) {
     this._cartProductsSubject.next(
@@ -22,10 +23,8 @@ export class DataService {
         .getValue()
         .filter((item: CartItem) => item.product.id != id)
     );
-    console.log(this._cartProductsSubject);
   }
-  public cartProducts$: Observable<CartItem[]> =
-    this._cartProductsSubject.asObservable();
+
   constructor(private http: HttpClient) {}
 
   getProduct(): Observable<Product[]> {

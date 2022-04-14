@@ -1,4 +1,5 @@
 <div class="form-container">
-    <app-form></app-form>
+    <span *ngIf="totalPrice"><i>you are about to be charged {{totalPrice}} Euros</i></span>
+    <app-form (newItemEvent)="addEvent($event)"></app-form>
 
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-payment',
@@ -6,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+  constructor(private cdref: ChangeDetectorRef) {}
+  public totalPrice: string = '';
+  ngOnInit(): void {
+    console.log(this.totalPrice);
+  }
+  ngAfterContentChecked() {
+    this.cdref.detectChanges();
+  }
+  addEvent(price: string) {
+    this.totalPrice = price.toString();
+  }
 }

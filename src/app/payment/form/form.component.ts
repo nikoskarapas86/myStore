@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -8,13 +9,23 @@ import { Router } from '@angular/router';
 })
 export class FormComponent implements OnInit {
   public paymentForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private route: Router) {}
+  @Output() newItemEvent = new EventEmitter<string>();
+  constructor(
+    private formBuilder: FormBuilder,
+    private routeAct: ActivatedRoute,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.paymentForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       address: ['', [Validators.required]],
       cardNum: ['', [Validators.required]],
+    });
+    this.routeAct.paramMap.subscribe((params) => {
+      if (params) {
+        this.newItemEvent.emit(params.get('totalPrice')?.toString());
+      }
     });
   }
 

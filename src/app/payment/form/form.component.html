@@ -1,0 +1,29 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <h1> Checkout </h1>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Full Name:</mat-label>
+        <input formControlName="name" matInput placeholder="Full Name">
+        <mat-error *ngIf="hasRequiredError('name')">
+            the above field is required
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Address :</mat-label>
+        <input formControlName="address" matInput placeholder="Address" />
+        <mat-error *ngIf="hasRequiredError('address')">
+            the above field is required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Credit Card Number:</mat-label>
+        <input formControlName="cardNum" matInput placeholder="Card Number" />
+        <mat-error *ngIf="hasRequiredError('cardNum')">
+            the above field is required
+        </mat-error>
+    </mat-form-field>
+
+    <button type="submit" [disabled]="paymentForm.invalid" mat-raised-button color="primary">Add to
+        PAY</button>
+
+</form>

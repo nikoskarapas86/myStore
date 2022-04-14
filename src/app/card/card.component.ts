@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { CartItem } from '../models/cart-item';
 import { DataService } from '../services/data.service';
 
@@ -12,9 +14,16 @@ import { DataService } from '../services/data.service';
 export class CardComponent implements OnInit {
   cartProducts$: Observable<CartItem[]>;
   totalPrice: number = 0;
-  constructor(private dataService: DataService, private route: Router) {}
+  constructor(
+    private dataService: DataService,
+    private dialog: MatDialog,
+    private route: Router
+  ) {}
   removeCart(id: number): void {
     this.dataService.removeFromCart(id);
+    this.dialog.open(ModalContentComponent, {
+      data: 'product has been removed succesfully',
+    });
     this.calculateTotalPrice();
   }
   ngOnInit(): void {

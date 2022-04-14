@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-content',
@@ -7,9 +7,15 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./modal-content.component.scss'],
 })
 export class ModalContentComponent implements OnInit {
-  constructor(private dialogRef: MatDialogRef<ModalContentComponent>) {}
+  message: string;
+  constructor(
+    private dialogRef: MatDialogRef<ModalContentComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.message = this.data;
+  }
   close() {
     this.dialogRef.close();
   }

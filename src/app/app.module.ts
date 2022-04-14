@@ -20,6 +20,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { SuccessComponent } from './success/success.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { FormComponent } from './payment/form/form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     PaymentComponent,
     SuccessComponent,
     ProductDetailComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,

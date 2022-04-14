@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { CartItem } from '../models/cart-item';
 import { Product } from '../models/product';
 import { DataService } from '../services/data.service';
@@ -49,7 +50,12 @@ export class ProductDetailComponent implements OnInit {
     };
 
     this.dataService.addToCart(cartItem);
-    this.router.navigateByUrl('/products');
+    this.dialog
+      .open(ModalContentComponent, {
+        data: 'product added succesfully',
+      })
+      .afterClosed()
+      .subscribe((_) => this.router.navigateByUrl('/products'));
   }
   hasRequiredError(key: string) {
     return (

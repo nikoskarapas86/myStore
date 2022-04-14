@@ -33,7 +33,9 @@ export class ProductComponent implements OnInit {
     };
 
     this.dataService.addToCart(cartItem);
-    this.dialog.open(ModalContentComponent);
+    this.dialog.open(ModalContentComponent, {
+      data: 'product added succesfully',
+    });
   }
   hasRequiredError(key: string) {
     return (

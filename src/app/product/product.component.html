@@ -14,6 +14,9 @@
 
                     <mat-option *ngFor="let val of selectValues" [value]="val">{{val}}</mat-option>
                 </mat-select>
+                <mat-error *ngIf="hasRequiredError('numOfProduct')">
+                    the above field is required
+                </mat-error>
             </mat-form-field>
             <button type="submit" [disabled]="productForm.invalid" mat-raised-button color="primary">Add to
                 Cart</button>

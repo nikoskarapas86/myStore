@@ -35,4 +35,10 @@ export class ProductComponent implements OnInit {
     this.dataService.addToCart(cartItem);
     this.dialog.open(ModalContentComponent);
   }
+  hasRequiredError(key: string) {
+    return (
+      this.productForm.get(key)?.touched &&
+      this.productForm.get(key)?.hasError('required')
+    );
+  }
 }

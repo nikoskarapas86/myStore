@@ -1,10 +1,26 @@
 # Mystore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
+MyStore is a single-page application and was generated with Angular version 13.3.2.
+this project is a simple eshop, presents a list of products that can be added to a cart .
+thefunctionalities :
+-you can view all products
+-you can view a product
+-you can view your cart
+-you can add products to your cart
+-you can remove products from your cart
+-you can pay for the products in your cart(this form doesnt execute any request)
 
-## Development server
+### Install Dependencies which included in package json
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+since you clone th project execute :
+
+```
+npm install
+
+### Development server
+
+Run `ng serve` for a dev server.
+ Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -25,3 +41,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```

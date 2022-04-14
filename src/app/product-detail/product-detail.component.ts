@@ -51,4 +51,10 @@ export class ProductDetailComponent implements OnInit {
     this.dataService.addToCart(cartItem);
     this.router.navigateByUrl('/products');
   }
+  hasRequiredError(key: string) {
+    return (
+      this.productDetailForm.get(key)?.touched &&
+      this.productDetailForm.get(key)?.hasError('required')
+    );
+  }
 }

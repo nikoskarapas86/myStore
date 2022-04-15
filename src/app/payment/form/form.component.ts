@@ -19,8 +19,8 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.paymentForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(20)]],
-      address: ['', [Validators.required, Validators.maxLength(60)]],
+      name: ['', [Validators.required, Validators.minLength(20)]],
+      address: ['', [Validators.required, Validators.minLength(30)]],
       cardNum: ['', [Validators.required]],
     });
     this.routeAct.paramMap.subscribe((params) => {
@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
       this.paymentForm.get(key)?.hasError('required')
     );
   }
-  hasMaxLengthError(key: string) {
+  hasMinLengthError(key: string) {
     return (
       this.paymentForm.get(key)?.touched && this.paymentForm.get(key)?.errors
     );

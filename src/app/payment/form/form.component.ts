@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormComponent implements OnInit {
   public paymentForm: FormGroup;
+  public isNotAnumber: boolean = false;
   @Output() newItemEvent = new EventEmitter<string>();
   constructor(
     private formBuilder: FormBuilder,
@@ -38,5 +39,24 @@ export class FormComponent implements OnInit {
       this.paymentForm.get(key)?.touched &&
       this.paymentForm.get(key)?.hasError('required')
     );
+  }
+  onModelChanged(event: any) {
+    // let value = this.paymentForm.get('cardNum').value;
+
+    if (event.length < 6) {
+      return;
+    }
+
+    event = [...event].filter((c) => c !== ' ').join('');
+
+    const res = [...event]
+
+      .map((c, i) => (i % 4 == 0 ? ' ' + c : c))
+
+      .join('')
+
+      .trim();
+
+    this.paymentForm.get('cardNum').setValue(res);
   }
 }

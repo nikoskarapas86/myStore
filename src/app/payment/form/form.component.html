@@ -17,13 +17,19 @@
     </mat-form-field>
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Credit Card Number:</mat-label>
-        <input formControlName="cardNum" matInput placeholder="Card Number" />
+        <input formControlName="cardNum" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)  &&
+
+        !(event.target.value.length == 0 && event.which == 48)" (ngModelChange)="onModelChanged($event)" maxlength="19"
+            matInput placeholder="Card Number" />
         <mat-error *ngIf="hasRequiredError('cardNum')">
             the above field is required
         </mat-error>
+        <mat-error *ngIf="isNotAnumber">
+            the above field must be number
+        </mat-error>
     </mat-form-field>
 
-    <button type="submit" [disabled]="paymentForm.invalid" mat-raised-button color="primary">Add to
+    <button type="submit" [disabled]="paymentForm.invalid || isNotAnumber" mat-raised-button color="primary">Add to
         PAY</button>
 
 </form>

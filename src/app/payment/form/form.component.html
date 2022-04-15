@@ -2,9 +2,12 @@
     <h1> Checkout </h1>
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Full Name:</mat-label>
-        <input formControlName="name" matInput placeholder="Full Name">
+        <input type="text" formControlName="name" matInput placeholder="Full Name">
         <mat-error *ngIf="hasRequiredError('name')">
             the above field is required
+        </mat-error>
+        <mat-error *ngIf="hasMaxLengthError('name')">
+            the above field is must have 20 letters length
         </mat-error>
     </mat-form-field>
 
@@ -13,6 +16,9 @@
         <input formControlName="address" matInput placeholder="Address" />
         <mat-error *ngIf="hasRequiredError('address')">
             the above field is required
+        </mat-error>
+        <mat-error *ngIf="hasMaxLengthError('address')">
+            the above field is must have 20 letters length
         </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width" appearance="fill">
